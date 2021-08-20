@@ -83,7 +83,7 @@ class Dashboard extends React.Component {
   loadData() {
     const { currentAquarium, auth } = this.state;
 
-    if (currentAquarium === null) {
+    if (currentAquarium === '') {
       return;
     }
 
