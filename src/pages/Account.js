@@ -1,15 +1,29 @@
+import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import {
   Box,
   Container,
   Grid
 } from '@material-ui/core';
+import axios from 'axios';
 import AccountProfile from 'src/components/account/AccountProfile';
 import AccountProfileDetails from 'src/components/account/AccountProfileDetails';
 import useAuth from 'src/useAuth';
 
 const Account = () => {
   const { auth } = useAuth();
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_BACK_URL}/user/${auth.user_id}`, {
+      headers: {
+        Authorization: `Bearer ${auth.token}`
+      }
+    })
+      .then((res) => {
+        setUser(res.data);
+      });
+  }, []);
 
   return (
     <>
@@ -34,7 +48,7 @@ const Account = () => {
               md={6}
               xs={12}
             >
-              <AccountProfile auth={auth} />
+              {user && (<AccountProfile user={user} />)}
             </Grid>
             <Grid
               item
@@ -42,7 +56,7 @@ const Account = () => {
               md={6}
               xs={12}
             >
-              <AccountProfileDetails auth={auth} />
+              {user && (<AccountProfileDetails user={user} />)}
             </Grid>
           </Grid>
         </Container>

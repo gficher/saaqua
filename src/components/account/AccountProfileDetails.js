@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import moment from 'moment';
+import PropTypes from 'prop-types';
 import {
   Box,
   Button,
@@ -12,6 +14,8 @@ import {
 import { toast } from 'react-toastify';
 
 const AccountProfileDetails = (props) => {
+  const { user } = props;
+
   const [values, setValues] = useState({
     name: 'Katarina',
     username: 'admin',
@@ -52,7 +56,7 @@ const AccountProfileDetails = (props) => {
                 name="name"
                 onChange={handleChange}
                 required
-                value={values.name}
+                value={user.name}
                 variant="outlined"
               />
             </Grid>
@@ -67,7 +71,7 @@ const AccountProfileDetails = (props) => {
                 name="username"
                 onChange={handleChange}
                 required
-                value={values.username}
+                value={user.username}
                 variant="outlined"
               />
             </Grid>
@@ -83,7 +87,7 @@ const AccountProfileDetails = (props) => {
                 onChange={handleChange}
                 required
                 type="date"
-                value={values.birthdate}
+                value={moment(user.birth).format('YYYY-MM-DD')}
                 variant="outlined"
               />
             </Grid>
@@ -92,6 +96,10 @@ const AccountProfileDetails = (props) => {
       </Card>
     </form>
   );
+};
+
+AccountProfileDetails.propTypes = {
+  user: PropTypes.object
 };
 
 export default AccountProfileDetails;
