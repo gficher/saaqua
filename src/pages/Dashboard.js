@@ -69,7 +69,7 @@ class Dashboard extends React.Component {
       })
         .then((res) => {
           this.setState({
-            aquariumList: res.data.aquariums
+            aquariumList: res.data
           });
 
           resolve();
