@@ -33,8 +33,8 @@ const Login = () => {
         <Container maxWidth="sm">
           <Formik
             initialValues={{
-              username: 'admin',
-              password: 'admin'
+              username: 'liaskarllate',
+              password: '12345678'
             }}
             validationSchema={Yup.object().shape({
               username: Yup.string().max(255).required('O campo Usuário é obrigatório'),
