@@ -71,7 +71,7 @@ const AccountProfileDetails = (props) => {
                 name="username"
                 onChange={handleChange}
                 required
-                value={user.username}
+                value={user.login}
                 variant="outlined"
               />
             </Grid>

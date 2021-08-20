@@ -42,7 +42,7 @@ const AccountProfile = (props) => {
             color="textSecondary"
             variant="body1"
           >
-            { user.username }
+            { user.login }
           </Typography>
         </Box>
       </CardContent>
