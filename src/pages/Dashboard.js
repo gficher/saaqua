@@ -88,7 +88,7 @@ class Dashboard extends React.Component {
     }
 
     // TODO Load data from backend
-    axios.get(`${process.env.REACT_APP_BACK_URL}/aquariums/${currentAquarium}`, {
+    axios.get(`${process.env.REACT_APP_BACK_URL}/aquarium/${currentAquarium}`, {
       headers: {
         Authorization: `Bearer ${auth.token}`
       }
