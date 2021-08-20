@@ -49,7 +49,10 @@ const Login = () => {
                 password
               })
                 .then((resp) => {
-                  setAuth(resp.data);
+                  setAuth({
+                    token: resp.data.token,
+                    user_id: resp.data.idUser,
+                  });
                   navigate('/app/dashboard', { replace: true });
                 }).catch((err) => {
                   console.log(err);
